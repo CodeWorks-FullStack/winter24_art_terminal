@@ -52,13 +52,13 @@ import Pop from '../utils/Pop.js';
 import { accountService } from '../services/AccountService.js';
 export default {
   setup() {
-    const editableAccountData = ref({})
+    const account = computed(() => AppState.account)
+    const editableAccountData = ref(account)
 
 
     return {
       editableAccountData,
-      account: computed(() => AppState.account),
-
+      account,
       async updateAccount() {
         try {
           await accountService.updateAccount(editableAccountData.value)
