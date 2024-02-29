@@ -22,6 +22,7 @@ import Pop from '../utils/Pop.js';
 import { projectsService } from '../services/ProjectsService.js'
 import { AppState } from '../AppState.js'
 import ModalComponent from '../components/ModalComponent.vue';
+import ProjectCard from '../components/ProjectCard.vue';
 export default {
   setup() {
     async function getProjects() {
@@ -40,7 +41,7 @@ export default {
       projects: computed(() => AppState.projects)
     };
   },
-  components: { ModalComponent }
+  components: { ModalComponent, ProjectCard }
 }
 </script>
 

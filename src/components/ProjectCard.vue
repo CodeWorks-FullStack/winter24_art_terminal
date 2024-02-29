@@ -4,7 +4,9 @@
     <div class="card-body d-flex justify-content-between">
       <div>
         <p class="card-title fs-5">{{ project.title }}</p>
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#projectModal">Open Gallery</button>
+        <button @click="setActiveProject()" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#projectModal">
+          Open Gallery
+        </button>
       </div>
       <img class="creator-picture" :src="project.creator.picture" :alt="project.creator.name">
     </div>
@@ -14,13 +16,20 @@
 
 <script>
 import { Project } from '../models/Project.js';
+import { projectsService } from '../services/ProjectsService.js';
+import { logger } from '../utils/Logger.js';
 
 export default {
   props: {
     project: { type: Project, required: true }
   },
-  setup() {
-    return {}
+  setup(props) {
+    return {
+      setActiveProject() {
+        logger.log(props.project)
+        projectsService.setActiveProject(props.project)
+      }
+    }
   }
 }
 </script>

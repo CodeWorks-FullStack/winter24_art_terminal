@@ -10,6 +10,10 @@ class ProjectsService {
     const newProjects = response.data.map(pojo => new Project(pojo))
     AppState.projects = newProjects
   }
+
+  setActiveProject(project) {
+    AppState.activeProject = project
+  }
 }
 
 export const projectsService = new ProjectsService()
