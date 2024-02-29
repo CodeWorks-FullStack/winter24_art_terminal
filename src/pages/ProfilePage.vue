@@ -10,6 +10,12 @@
         <p>{{ profile.bio }}</p>
       </div>
     </section>
+
+    <section class="row">
+      <div v-for="profileProject in projects" class="col-md-4">
+        <ProjectCard :project="profileProject" />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -22,40 +28,40 @@ import { profilesService } from '../services/ProfilesService.js'
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js'
 import { projectsService } from '../services/ProjectsService.js';
+import ProjectCard from '../components/ProjectCard.vue';
 
 export default {
-
   setup() {
-    const route = useRoute()
-
+    const route = useRoute();
     async function getProfileById() {
       try {
-        const profileId = route.params.profileId
-        logger.log('Id from route parameters', profileId)
-        await profilesService.getProfileById(profileId)
-      } catch (error) {
-        Pop.error(error)
+        const profileId = route.params.profileId;
+        logger.log('Id from route parameters', profileId);
+        await profilesService.getProfileById(profileId);
+      }
+      catch (error) {
+        Pop.error(error);
       }
     }
-
     async function getProjectsByCreatorId() {
       try {
-        const profileId = route.params.profileId
-        await projectsService.getProjectsByCreatorId(profileId)
-      } catch (error) {
-        Pop.error(error)
+        const profileId = route.params.profileId;
+        await projectsService.getProjectsByCreatorId(profileId);
+      }
+      catch (error) {
+        Pop.error(error);
       }
     }
-
     onMounted(() => {
-      getProfileById()
-      getProjectsByCreatorId()
-    })
-
+      getProfileById();
+      getProjectsByCreatorId();
+    });
     return {
-      profile: computed(() => AppState.activeProfile)
-    }
-  }
+      profile: computed(() => AppState.activeProfile),
+      projects: computed(() => AppState.projects)
+    };
+  },
+  components: { ProjectCard }
 }
 </script>
 
