@@ -8,7 +8,16 @@
 
     <section class="row">
       <div v-for="project in projects" :key="project.id" class="col-md-3">
-        Test
+        <div class="card">
+          <img :src="project.coverImg" class="card-img-top" :alt="project.title">
+          <div class="card-body d-flex justify-content-between">
+            <div>
+              <p class="card-title fs-5">{{ project.title }}</p>
+              <button class="btn btn-danger">Open Gallery</button>
+            </div>
+            <img class="creator-picture" :src="project.creator.picture" :alt="project.creator.name">
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -42,4 +51,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.creator-picture {
+  height: 8vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+</style>
