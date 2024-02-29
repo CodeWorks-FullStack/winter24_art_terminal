@@ -11,6 +11,13 @@ class ProjectsService {
     AppState.projects = newProjects
   }
 
+  async getProjectsByCreatorId(profileId) {
+    const response = await api.get(`api/projects?creatorId=${profileId}`)
+    logger.log('GOT PROJECTS', response.data)
+    const newProjects = response.data.map(pojo => new Project(pojo))
+    AppState.projects = newProjects
+  }
+
   setActiveProject(project) {
     AppState.activeProject = project
   }

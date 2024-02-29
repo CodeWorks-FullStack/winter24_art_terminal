@@ -3,7 +3,7 @@
     <section v-if="profile" class="row my-3">
       <div class="col-12 text-center">
         <img class="profile-picture" :src="profile.picture" :alt="profile.name">
-        <img class="profile-cover-img" :src="profile.coverImg" alt="">
+        <img class="profile-cover-img" :src="profile.coverImg" :alt="profile.name + ' cover image'">
       </div>
       <div class="col-12">
         <h1>{{ profile.name }}</h1>
@@ -21,6 +21,7 @@ import Pop from '../utils/Pop.js';
 import { profilesService } from '../services/ProfilesService.js'
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js'
+import { projectsService } from '../services/ProjectsService.js';
 
 export default {
 
@@ -37,9 +38,20 @@ export default {
       }
     }
 
+    async function getProjectsByCreatorId() {
+      try {
+        const profileId = route.params.profileId
+        await projectsService.getProjectsByCreatorId(profileId)
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
+
     onMounted(() => {
       getProfileById()
+      getProjectsByCreatorId()
     })
+
     return {
       profile: computed(() => AppState.activeProfile)
     }
