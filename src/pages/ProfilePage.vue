@@ -2,7 +2,7 @@
   <div class="container">
     <section class="row">
       <div class="col-12">
-
+        {{ }}
       </div>
     </section>
   </div>
@@ -10,13 +10,15 @@
 
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { profilesService } from '../services/ProfilesService.js'
 import { useRoute } from 'vue-router';
+import { AppState } from '../AppState.js'
 
 export default {
+
   setup() {
     const route = useRoute()
 
@@ -33,7 +35,9 @@ export default {
     onMounted(() => {
       getProfileById()
     })
-    return {}
+    return {
+      profile: computed(() => AppState.activeProfile)
+    }
   }
 }
 </script>
