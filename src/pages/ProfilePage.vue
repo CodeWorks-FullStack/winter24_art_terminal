@@ -1,5 +1,11 @@
 <template>
-  <h1>Profile page loaded!</h1>
+  <div class="container">
+    <section class="row">
+      <div class="col-12">
+
+      </div>
+    </section>
+  </div>
 </template>
 
 
