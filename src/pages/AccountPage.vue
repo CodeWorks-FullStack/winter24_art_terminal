@@ -55,6 +55,7 @@ export default {
     const account = computed(() => AppState.account)
     const editableAccountData = ref({})
 
+
     watch(account, () => { editableAccountData.value = { ...account.value } }, { immediate: true })
 
 

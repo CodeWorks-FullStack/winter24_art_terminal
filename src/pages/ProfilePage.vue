@@ -6,7 +6,7 @@
         <img class="profile-cover-img" :src="profile.coverImg" :alt="profile.name + ' cover image'">
       </div>
       <div class="col-12">
-        <h1>{{ profile.name }}</h1>
+        <h1><i v-if="profile.graduated" class="mdi mdi-feather"></i> {{ profile.name }}</h1>
         <p>{{ profile.bio }}</p>
       </div>
     </section>
