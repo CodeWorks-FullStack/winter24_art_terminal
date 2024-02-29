@@ -8,7 +8,10 @@
           Open Gallery
         </button>
       </div>
-      <img class="creator-picture" :src="project.creator.picture" :alt="project.creator.name">
+      <router-link :to="{ name: 'Profile' }">
+        <img class="creator-picture selectable" :src="project.creator.picture" :alt="project.creator.name" role="button"
+          :title="`Go to ${project.creator.name}'s profile page`">
+      </router-link>
     </div>
   </div>
 </template>
