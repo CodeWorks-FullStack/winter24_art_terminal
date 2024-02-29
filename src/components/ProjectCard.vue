@@ -8,7 +8,7 @@
           Open Gallery
         </button>
       </div>
-      <router-link :to="{ name: 'Profile' }">
+      <router-link :to="{ name: 'Profile', params: { profileId: project.creatorId } }">
         <img class="creator-picture selectable" :src="project.creator.picture" :alt="project.creator.name" role="button"
           :title="`Go to ${project.creator.name}'s profile page`">
       </router-link>
