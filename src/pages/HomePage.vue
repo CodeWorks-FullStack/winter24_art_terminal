@@ -7,13 +7,13 @@
     </section>
 
     <section class="row">
-      <div v-for="project in projects" :key="project.id" class="col-md-3">
+      <div v-for="project in projects" :key="project.id" class="col-md-3 mb-3">
         <div class="card">
           <img :src="project.coverImg" class="card-img-top" :alt="project.title">
           <div class="card-body d-flex justify-content-between">
             <div>
               <p class="card-title fs-5">{{ project.title }}</p>
-              <button class="btn btn-danger">Open Gallery</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#projectModal">Open Gallery</button>
             </div>
             <img class="creator-picture" :src="project.creator.picture" :alt="project.creator.name">
           </div>
@@ -21,6 +21,8 @@
       </div>
     </section>
   </div>
+
+  <ModalComponent />
 </template>
 
 <script>
@@ -56,6 +58,11 @@ export default {
   height: 8vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-img-top {
+  height: 32vh;
   object-fit: cover;
 }
 </style>
