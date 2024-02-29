@@ -7,8 +7,8 @@
     </section>
 
     <section class="row">
-      <div class="col-12">
-        {{ projects }}
+      <div v-for="project in projects" :key="project.id" class="col-md-3">
+        Test
       </div>
     </section>
   </div>
