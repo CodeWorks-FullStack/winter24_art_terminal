@@ -46,14 +46,16 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { AppState } from '../AppState';
 import Pop from '../utils/Pop.js';
 import { accountService } from '../services/AccountService.js';
 export default {
   setup() {
     const account = computed(() => AppState.account)
-    const editableAccountData = ref(account)
+    const editableAccountData = ref({})
+
+    watch(account, () => { editableAccountData.value = { ...account.value } }, { immediate: true })
 
 
     return {
