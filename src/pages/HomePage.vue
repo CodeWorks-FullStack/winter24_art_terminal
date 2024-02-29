@@ -1,10 +1,24 @@
-<template></template>
+<template>
+  <div class="container">
+    <section class="row">
+      <div class="col-12">
+        <h1>Projects</h1>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="col-12">
+        {{ projects }}
+      </div>
+    </section>
+  </div>
+</template>
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import Pop from '../utils/Pop.js';
 import { projectsService } from '../services/ProjectsService.js'
-
+import { AppState } from '../AppState.js'
 export default {
   setup() {
 
@@ -22,7 +36,7 @@ export default {
     })
 
     return {
-
+      projects: computed(() => AppState.projects)
     }
   }
 }
