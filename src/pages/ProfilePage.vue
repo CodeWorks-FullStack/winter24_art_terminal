@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <section class="row">
+    <section v-if="profile" class="row my-3">
+      <div class="col-12 text-center">
+        <img class="profile-picture" :src="profile.picture" :alt="profile.name">
+        <img class="profile-cover-img" :src="profile.coverImg" alt="">
+      </div>
       <div class="col-12">
-        {{ }}
+        <h1>{{ profile.name }}</h1>
+        <p>{{ profile.bio }}</p>
       </div>
     </section>
   </div>
@@ -43,4 +48,19 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.profile-picture {
+  height: 30vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-cover-img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  transform: translateY(-12vh);
+  margin-bottom: -12vh;
+}
+</style>
