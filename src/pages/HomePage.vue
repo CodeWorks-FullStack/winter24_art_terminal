@@ -11,6 +11,7 @@
         <ProjectCard :project="project" />
       </div>
     </section>
+
   </div>
 </template>
 
@@ -31,7 +32,6 @@ export default {
       }
     }
     onMounted(() => {
-      console.log('home page mounted');
       getProjects();
     });
     return {

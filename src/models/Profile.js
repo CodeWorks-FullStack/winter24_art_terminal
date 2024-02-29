@@ -6,6 +6,8 @@ export class Profile {
     this.bio = data.bio
     this.coverImg = data.coverImg
     this.graduated = data.graduated
+
+    // NOTE you might want to add more properties here!!!
   }
 }
 

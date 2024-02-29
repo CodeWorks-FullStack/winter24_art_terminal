@@ -55,8 +55,14 @@ export default {
     const account = computed(() => AppState.account)
     const editableAccountData = ref({})
 
-
+    // NOTE watch will run a callback function whenever a computed/ref/reactive value changes
+    // 1st argument: what am I watching
+    // 2nd argument: what should I do when the watched value changes
+    // 3rd argument: should I run my callback function on page load
     watch(account, () => { editableAccountData.value = { ...account.value } }, { immediate: true })
+
+    // NOTE spread operator dumps all properties out of object into a new object, which breaks reference to original in memory (makes a copy)
+    // () => { editableAccountData.value = { ...account.value } }
 
 
     return {

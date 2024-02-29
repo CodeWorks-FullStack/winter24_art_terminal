@@ -26,10 +26,11 @@ export default {
   props: {
     project: { type: Project, required: true }
   },
+  // NOTE you can pass props through your setup to access properties from it
   setup(props) {
     return {
       setActiveProject() {
-        logger.log(props.project)
+        logger.log(props.project) // NOTE our project object
         projectsService.setActiveProject(props.project)
       }
     }

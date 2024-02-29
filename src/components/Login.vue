@@ -18,6 +18,7 @@
                 Manage Account
               </div>
             </router-link>
+            <!-- NOTE allows user to access their own profile page. v-if is needed here because undefined is not an acceptable value for a route parameter -->
             <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account.id } }">
               <div class="list-group-item dropdown-item list-group-item-action">
                 Go to your profile
