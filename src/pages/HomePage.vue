@@ -12,8 +12,6 @@
       </div>
     </section>
   </div>
-
-  <ModalComponent />
 </template>
 
 <script>
@@ -21,7 +19,6 @@ import { computed, onMounted } from 'vue';
 import Pop from '../utils/Pop.js';
 import { projectsService } from '../services/ProjectsService.js'
 import { AppState } from '../AppState.js'
-import ModalComponent from '../components/ModalComponent.vue';
 import ProjectCard from '../components/ProjectCard.vue';
 export default {
   setup() {
@@ -41,7 +38,7 @@ export default {
       projects: computed(() => AppState.projects)
     };
   },
-  components: { ModalComponent, ProjectCard }
+  components: { ProjectCard }
 }
 </script>
 
